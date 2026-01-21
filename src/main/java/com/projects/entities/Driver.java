@@ -21,6 +21,14 @@ public class Driver implements Serializable{
         this.licenseDriver = licenseDriver;
         this.phone = phone;
     }
+    public Driver(Integer id, String cpf, String name, Date birthDate, String licenseDriver, String phone){
+        this.id = id;
+        this.cpf = cpf;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.licenseDriver = licenseDriver;
+        this.phone = phone;
+    }
     public Integer getId() {
         return id;
     }
