@@ -1,0 +1,30 @@
+CREATE SCHEMA transportsystem;
+USE transportsystem;
+
+CREATE TABLE Driver(
+    id	INTEGER NOT NULL AUTO_INCREMENT,
+    cpf CHAR(11) NOT NULL,
+    name VARCHAR(80) NOT NULL,
+    birthDate DATE NOT NULL,
+    licenseDriver VARCHAR(20) NOT NULL,
+    phone  CHAR(11),
+    PRIMARY KEY(id));
+CREATE TABLE Vehicle(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    truckSign CHAR(7) NOT NULL,
+    maxWeight DOUBLE(10,2) NOT NULL,
+    numberAxles INTEGER NOT NULL,
+    PRIMARY KEY (id));
+CREATE TABLE Freight(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    idDriver INTEGER NOT NULL,
+    idVehicle INTEGER NOT NULL,
+    value DOUBLE(10,2) NOT NULL,
+    placeOrigin VARCHAR(100) NOT NULL,
+    placeDestiny VARCHAR(100) NOT NULL,
+    payment BOOLEAN NOT NULL,
+    weight DOUBLE(10,2) NOT NULL,
+    freightType	VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT Driver FOREIGN KEY (idDriver) REFERENCES Driver(id),
+    CONSTRAINT Vehicle FOREIGN KEY (idVehicle) REFERENCES Vehicle(id));
