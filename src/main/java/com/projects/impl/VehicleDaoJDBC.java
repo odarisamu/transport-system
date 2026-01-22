@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.projects.dao.VehicleDAO;
@@ -34,13 +35,34 @@ public class VehicleDaoJDBC implements VehicleDAO{
 
     @Override
     public Vehicle findById(Integer id) {
-        try(Connection connection = Conection.getConnection();
+        try(Connection connection = Conection.getConnection( );
                PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle WHERE id = ?")){
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery( );
-            if(result.next( ))
-                return new Vehicle(null, null, id) //colocar mais um construtor com id aqui para retornar corretamente
-            
+            if(result.next( )){
+                return new Vehicle(result.getInt("id"), result.getString("truckSign"), result.getDouble("maxWeight"), 
+                result.getInt("numberAxles"));
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace( );
+            System.err.println("Erro na interacao com o banco de dados.");
+            return null;
+        }
+    }
+
+    @Override
+    public void update(Vehicle vehicle) {
+        try(Connection connection = Conection.getConnection();
+               PreparedStatement statement = connection.prepareStatement("UPDATE Vehicle SET truckSign = ?, maxWeight = ?, numberAxles = ? " + 
+               "WHERE id = ?")){
+            statement.setString(1, vehicle.getTruckSign());
+            statement.setDouble(2, vehicle.getMaxWeight());
+            statement.setInt(3, vehicle.getNumberAxles());
+            statement.setInt(4, vehicle.getId());
+            int rowsAffected = statement.executeUpdate();
+            if(rowsAffected > 0)
+                System.out.println("Veiculo atualizado!!!");
         } catch (SQLException e) {
             e.printStackTrace( );
             System.err.println("Erro na interacao com o banco de dados.");
@@ -48,18 +70,34 @@ public class VehicleDaoJDBC implements VehicleDAO{
     }
 
     @Override
-    public void update(Vehicle vehicle) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public void deleteById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try(Connection connection = Conection.getConnection();
+              PreparedStatement statement = connection.prepareStatement("DELETE FROM Vehicle WHERE id = ?")){
+            statement.setInt(1, id);
+            int rowsAffected = statement.executeUpdate();
+            if(rowsAffected > 0)
+                System.out.println("Veiculo removido!!!");
+        } catch (SQLException e) {
+            e.printStackTrace( );
+            System.err.println("Erro na interacao com o banco de dados.");
+        }
     }
 
     @Override
     public List<Vehicle> listAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try(Connection connection = Conection.getConnection( );
+               PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicles")){
+            ResultSet result = statement.executeQuery();
+            List<Vehicle> vehicles = new ArrayList<>();
+            while(result.next( )){
+                vehicles.add(new Vehicle(result.getInt("id"), result.getString("truckSign"), 
+                result.getDouble("maxWeight"), result.getInt("numberAxles")));
+            }
+            return vehicles;
+        } catch (SQLException e) {
+            e.printStackTrace( );
+            System.err.println("Erro na interacao com o banco de dados.");
+            return null;
+        }
     }
-    
 }

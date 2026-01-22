@@ -13,11 +13,23 @@ public class Freight implements Serializable{
     private String type;
 
     public Freight( ){
-
+        this(null, null, null, null, null, null, null, null);
     }
     public Freight(Integer idDriver, Integer idVehicle, Double value, String placeOrigin, String placeDestiny, Boolean payment,
         Double weight, String type){
             this.id = null;
+            this.idDriver = idDriver;
+            this.idVehicle = idVehicle;
+            this.value = value;
+            this.placeOrigin = placeOrigin;
+            this.placeDestiny = placeDestiny;
+            this.payment = payment;
+            this.weight = weight;
+            this.type = type;
+    }
+    public Freight(Integer id, Integer idDriver, Integer idVehicle, Double value, String placeOrigin, String placeDestiny, 
+        Boolean payment, Double weight, String type){
+            this.id = id;
             this.idDriver = idDriver;
             this.idVehicle = idVehicle;
             this.value = value;
@@ -72,6 +84,12 @@ public class Freight implements Serializable{
 
     @Override
     public String toString() {
+        String clientPayment = "";
+        if(payment){
+            clientPayment = "Pago";
+        } else{
+            clientPayment = "Nao pago";
+        }
         StringBuilder sb = new StringBuilder();
         sb.append("Frete: ");
         sb.append("id = ").append(id);
@@ -80,10 +98,26 @@ public class Freight implements Serializable{
         sb.append(", valor = ").append(value);
         sb.append(", origem = ").append(placeOrigin);
         sb.append(", destino = ").append(placeDestiny);
-        sb.append(", pagamento = ").append(payment);
+        sb.append(", pagamento = ").append(clientPayment);
         sb.append(", peso = ").append(weight);
         sb.append(", tipo = ").append(type);
         return sb.toString();
+    }
+
+    public Integer getIdDriver() {
+        return idDriver;
+    }
+
+    public void setIdDriver(Integer idDriver) {
+        this.idDriver = idDriver;
+    }
+
+    public Integer getIdVehicle() {
+        return idVehicle;
+    }
+
+    public void setIdVehicle(Integer idVehicle) {
+        this.idVehicle = idVehicle;
     }
     
 }

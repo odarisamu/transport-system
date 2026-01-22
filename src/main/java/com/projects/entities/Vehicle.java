@@ -17,6 +17,12 @@ public class Vehicle implements Serializable{
         this.maxWeight = maxWeight;
         this.numberAxles = numberAxles;
     }
+        public Vehicle(Integer id, String truckSign, Double maxWeight, Integer numberAxles){
+        this.id = id;
+        this.truckSign = truckSign;
+        this.maxWeight = maxWeight;
+        this.numberAxles = numberAxles;
+    }
     public Integer getId() {
         return id;
     }
