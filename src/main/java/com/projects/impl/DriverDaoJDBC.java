@@ -57,7 +57,8 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public void update(Driver driver) {
         try(Connection connection = Conection.getConnection();
-               PreparedStatement statement = connection.prepareStatement("UPDATE Driver SET cpf = ?, name = ?, birthDate = ?, licenseDriver = ?, phone = ? WHERE id = ?")){
+               PreparedStatement statement = connection.prepareStatement("UPDATE Driver SET cpf = ?, name = ?, birthDate = ?, licenseDriver = ?, " +
+               "phone = ? WHERE id = ?")){
             statement.setString(1, driver.getCpf());
             statement.setString(2, driver.getName());
             statement.setDate(3, driver.getBirthDate());
