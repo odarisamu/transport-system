@@ -72,7 +72,7 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public List<Freight> listAll() {
         try (Connection connection = Conection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle ")){
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle")){
             ResultSet result = statement.executeQuery( );
             List<Freight> vehicles = new ArrayList<>();
             while(result.next( )){
