@@ -43,10 +43,7 @@ public class DriverDaoJDBC implements DriverDAO{
                 return new Driver(result.getInt("id"), result.getString("cpf"), result.getString("name"),
                 result.getDate("birthDate"), result.getString("licenseDriver"), result.getString("phone"));
             }
-            else{
-                System.out.println("Sem motorista com esse id!!!");
-                return null;
-            }
+            return null;
         } catch(SQLException e){
             e.printStackTrace( );
             System.err.println("Erro na interacao com o banco de dados.");
