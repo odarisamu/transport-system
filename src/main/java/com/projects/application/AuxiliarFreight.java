@@ -49,7 +49,24 @@ public class AuxiliarFreight {
     }
 
     public static void insert(FreightDAO freightDAO){
+        System.out.print("Digite as informacoes do novo frete: \n");
+        System.out.println("ID do motorista: ");
+        Integer idDriver = input.nextInt( );
+        System.out.println("ID do veiculo: ");
+        Integer idVehicle = input.nextInt( );
+        System.out.println("Valor do frete: ");
+        Double value = input.nextDouble( );
+        System.out.println("Lugar de origem: ");
+        String placeOrigin = input.nextLine( );
+        System.out.println("Lugar de destino: ");
+        String placeDestiny = input.nextLine( );
+        System.out.println("Peso da carga ");
+        Double weight = input.nextDouble( );
+        System.out.println("Tipo da carga: ");
+        String type = input.nextLine( );
 
+        Freight freight = new Freight(idDriver, idVehicle, value, placeOrigin, placeDestiny, false, weight, type);
+        freightDAO.insert(freight);
     }
     
     public static void update(FreightDAO freightDAO){
