@@ -1,4 +1,5 @@
 package com.projects.application;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.projects.dao.DaoFactory;
@@ -15,7 +16,15 @@ public class Main {
             System.out.println("\n##### Sistema de Fretes #####");
             System.out.println("1. Fretes\n2. Veículos\n3. Motoristas\n4. Desligar");
             System.out.print("Qual opçao deseja? ");
-            number = Integer.parseInt(input.next( ));
+            try{
+                number = input.nextInt( );
+            } catch(InputMismatchException e){
+                System.out.println("O valor deve ser um inteiro!");
+                input.nextLine( );
+            } catch(Exception e){
+                System.out.println("Erro desconhecido!");
+                input.nextLine( );
+            }
             switch(number){
                 case 1:
                     auxiliarFreight( );
@@ -30,7 +39,7 @@ public class Main {
                     break;
                 default:
                     System.err.println("Entrada inválida! Tente novamente...");
-            }
+                }
         } while (number != 4);
         System.out.println("Encerrando o sistema...");
     }
@@ -50,7 +59,15 @@ public class Main {
                 "8. Pesquisar frete. \n" +
                 "9. Retornar.");
             System.out.println("Qual opçao deseja? ");
-            option = Integer.parseInt(input.next( ));
+            try{
+                option = input.nextInt( );
+            }   catch(InputMismatchException e){
+                System.out.println("O valor deve ser um inteiro!");
+                input.nextLine( );
+            } catch(Exception e){
+                System.out.println("Erro desconhecido!");
+                input.nextLine( );
+            }
 
             switch(option){
                 case 1:
@@ -97,7 +114,15 @@ public class Main {
                 "5. Listar todos os veículos; \n" +
                 "6. Retornar.");
             System.out.println("Qual opçao deseja? ");
-            option = Integer.parseInt(input.next( ));
+            try{
+                option = input.nextInt( );
+            } catch(InputMismatchException e){
+                System.out.println("O valor deve ser um inteiro!");
+                input.nextLine( );
+            } catch(Exception e){
+                System.out.println("Erro desconhecido!");
+                input.nextLine( );
+            }
             switch(option){
                 case 1:
                     AuxiliarVehicle.insert(vehicleDAO);
@@ -135,8 +160,15 @@ public class Main {
                 "5. Apagar motorista; \n" +
                 "6. Retornar.");
             System.out.println("Qual opçao deseja? ");
-            option = Integer.parseInt(input.next( ));
-
+            try{
+                option = input.nextInt( );
+            } catch(InputMismatchException e){
+                System.out.println("O valor deve ser um inteiro!");
+                input.nextLine( );
+            } catch(Exception e){
+                System.out.println("Erro desconhecido!");
+                input.nextLine( );
+            }
             switch(option){
                 case 1:
                     AuxiliarDriver.listAll(driverDAO);
