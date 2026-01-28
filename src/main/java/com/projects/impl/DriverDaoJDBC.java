@@ -83,7 +83,7 @@ public class DriverDaoJDBC implements DriverDAO{
             statement.executeUpdate( );
             ResultSet result = statement.getGeneratedKeys();
             if(result.next( ))
-                driver.setId(result.getInt("id"));
+                driver.setId(result.getInt(1));
             result.close( );
             System.out.println("Motorista adicionado!!!");
         } catch(SQLException e){

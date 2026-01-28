@@ -24,8 +24,10 @@ public class AuxiliarVehicle {
             vehicleDAO.insert(vehicle);
         } catch(InputMismatchException e){
             System.out.println("O valor digitado nao corresponde ao requerido!");
+            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
+            input.nextLine( );
         }
     }
     
@@ -41,8 +43,10 @@ public class AuxiliarVehicle {
             }
         } catch(InputMismatchException e){
             System.out.println("O valor digitado deve ser um inteiro!");
+            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
+            input.nextLine( );
         }
     }
 
@@ -100,8 +104,10 @@ public class AuxiliarVehicle {
                 }
             } catch(InputMismatchException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
+                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
+                input.nextLine( );
             }
     }
 
@@ -112,8 +118,10 @@ public class AuxiliarVehicle {
             vehicleDAO.deleteById(id);
         } catch(InputMismatchException e){
             System.out.println("O valor digitado deve ser um inteiro!");
+            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
+            input.nextLine( );
         }
     }
 

@@ -32,8 +32,10 @@ public class AuxiliarDriver {
             }
             } catch(InputMismatchException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
+                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
+                input.nextLine( );
             }
     }
 
@@ -111,8 +113,10 @@ public class AuxiliarDriver {
                 }
             } catch(InputMismatchException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
+                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
+                input.nextLine( );
             }
         }
     }
@@ -132,6 +136,7 @@ public class AuxiliarDriver {
             String birth = year + "-" + month + "-" + day;
             Date birthDate = Date.valueOf(birth);
             System.out.println("Carteira de Motorista: ");
+            input.nextLine( );
             String licenseDriver = input.nextLine( );
             System.out.println("Telefone (DD9NNNNNNNN): ");
             String phone = input.nextLine( );
@@ -139,8 +144,10 @@ public class AuxiliarDriver {
             driverDAO.insert(driver);
         } catch(InputMismatchException e){
             System.out.println("O valor digitado nao e do tipo especificado!");
+            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
+            input.nextLine( );
         }
     }
 
@@ -151,8 +158,10 @@ public class AuxiliarDriver {
             driverDAO.deleteById(id);
         } catch(InputMismatchException e){
             System.out.println("O valor digitado deve ser um inteiro!");
+            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
+            input.nextLine( );
         }
     }
 }

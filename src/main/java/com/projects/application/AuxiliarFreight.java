@@ -13,9 +13,9 @@ public class AuxiliarFreight {
     public static void changePayment(FreightDAO freightDAO){
         System.out.println("Digite o ID da carga para alterar o pagamento: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.next( ));
             freightDAO.changePayment(id);
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
@@ -59,22 +59,22 @@ public class AuxiliarFreight {
         System.out.print("Digite as informacoes do novo frete: \n");
         try{
             System.out.println("ID do motorista: ");
-            Integer idDriver = input.nextInt( );
+            Integer idDriver = Integer.parseInt(input.nextLine( ));
             System.out.println("ID do veiculo: ");
-            Integer idVehicle = input.nextInt( );
+            Integer idVehicle = Integer.parseInt(input.nextLine( )); 
             System.out.println("Valor do frete: ");
-            Double value = input.nextDouble( );
-            System.out.println("Lugar de origem: ");
-            String placeOrigin = input.nextLine( );
+            Double value = Double.parseDouble(input.nextLine( ));
+            System.out.println("Lugar de origem: "); 
+            String placeOrigin = input.nextLine();
             System.out.println("Lugar de destino: ");
-            String placeDestiny = input.nextLine( );
+            String placeDestiny = input.nextLine();
             System.out.println("Peso da carga ");
-            Double weight = input.nextDouble( );
+            Double weight = Double.parseDouble(input.nextLine( ));
             System.out.println("Tipo da carga: ");
-            String type = input.nextLine( );
+            String type = input.nextLine( ); 
             Freight freight = new Freight(idDriver, idVehicle, value, placeOrigin, placeDestiny, false, weight, type);
             freightDAO.insert(freight);
-        } catch(InputMismatchException e){
+        } catch(InputMismatchException |NumberFormatException e){
             System.out.println("O tipo digitado nao corresponde ao requerido!");
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
@@ -93,23 +93,23 @@ public class AuxiliarFreight {
             "6. Peso\n" + 
             "7. Tipo\n");
             try{
-                Integer option = input.nextInt( );
+                Integer option = Integer.parseInt(input.nextLine( ));
                 switch(option){
                     case 1:
                         System.out.println("Digite o ID do motorista: ");
-                        Integer idDriver = input.nextInt( );
+                        Integer idDriver = Integer.parseInt(input.nextLine( ));
                         freight.setIdDriver(idDriver);
                         freightDAO.update(freight);
                         break;
                     case 2:
                         System.out.println("Digite o ID do veículo: ");
-                        Integer idVehicle = input.nextInt( );
+                        Integer idVehicle = Integer.parseInt(input.nextLine( ));
                         freight.setIdVehicle(idVehicle);
                         freightDAO.update(freight);
                         break;
                     case 3:
                         System.out.println("Digite o valor do frete: ");
-                        Double value = input.nextDouble( );
+                        Double value = Double.parseDouble(input.nextLine( ));
                         freight.setValue(value);
                         freightDAO.update(freight);
                         break;
@@ -127,7 +127,7 @@ public class AuxiliarFreight {
                         break;
                     case 6:
                         System.out.println("Digite o peso do frete: ");
-                        Double weight  = input.nextDouble( );
+                        Double weight  = Double.parseDouble(input.nextLine( ));
                         freight.setWeight(weight);
                         freightDAO.update(freight);
                         break;
@@ -151,9 +151,9 @@ public class AuxiliarFreight {
     public static void deleteById(FreightDAO freightDAO){
         System.out.println("Digite o ID do frete a excluir: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             freightDAO.deleteById(id);
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
@@ -163,14 +163,14 @@ public class AuxiliarFreight {
     public static void findById(FreightDAO freightDAO){
         System.out.println("Insira o ID do frete procurado: ");
         try{
-            Integer id = Integer.parseInt(input.next( ));
+            Integer id = Integer.parseInt(input.nextLine( ));
             Freight freight = freightDAO.findById(id);
             if(freight != null){
                 System.out.println(freight);
             } else{
                 System.out.println("Nao há fretes com o ID informado.");
             }
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
@@ -180,14 +180,14 @@ public class AuxiliarFreight {
         public static Freight findByIdAux(FreightDAO freightDAO){
         System.out.println("Insira o ID do frete procurado: ");
         try{
-            Integer id = Integer.parseInt(input.next( ));
+            Integer id = Integer.parseInt(input.nextLine( ));
             Freight freight = freightDAO.findById(id);
             if(freight != null){
                 return freight;
             } else{
                 return null;
             }
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
             return null;
         } catch(Exception e){

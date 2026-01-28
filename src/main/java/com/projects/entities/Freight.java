@@ -92,15 +92,16 @@ public class Freight implements Serializable{
         }
         StringBuilder sb = new StringBuilder();
         sb.append("Frete: ");
-        sb.append("id = ").append(id);
-        sb.append(", id motorista = ").append(idDriver);
-        sb.append(", id veículo = ").append(idVehicle);
-        sb.append(", valor = ").append(value);
-        sb.append(", origem = ").append(placeOrigin);
-        sb.append(", destino = ").append(placeDestiny);
-        sb.append(", pagamento = ").append(clientPayment);
-        sb.append(", peso = ").append(weight);
-        sb.append(", tipo = ").append(type);
+        sb.append("\nid = ").append(id);
+        sb.append("\nid motorista = ").append(idDriver);
+        sb.append("\nid veículo = ").append(idVehicle);
+        sb.append("\nvalor = ").append(value);
+        sb.append("\norigem = ").append(placeOrigin);
+        sb.append("\ndestino = ").append(placeDestiny);
+        sb.append("\npagamento = ").append(clientPayment);
+        sb.append("\npeso = ").append(weight);
+        sb.append("\ntipo = ").append(type);
+        sb.append("\n");
         return sb.toString();
     }
 

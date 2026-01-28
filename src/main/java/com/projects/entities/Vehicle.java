@@ -52,10 +52,11 @@ public class Vehicle implements Serializable{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Veículo: ");
-        sb.append("id = ").append(id);
-        sb.append(", placa = ").append(truckSign);
-        sb.append(", peso máximo = ").append(maxWeight);
-        sb.append(", número de eixos = ").append(numberAxles);
+        sb.append("\nid = ").append(id);
+        sb.append("\nplaca = ").append(truckSign);
+        sb.append("\npeso máximo = ").append(maxWeight);
+        sb.append("\nnúmero de eixos = ").append(numberAxles);
+        sb.append("\n");
         return sb.toString();
     }
 

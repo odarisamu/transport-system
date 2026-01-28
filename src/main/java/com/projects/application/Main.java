@@ -1,5 +1,4 @@
 package com.projects.application;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.projects.dao.DaoFactory;
@@ -17,13 +16,11 @@ public class Main {
             System.out.println("1. Fretes\n2. Veículos\n3. Motoristas\n4. Desligar");
             System.out.print("Qual opçao deseja? ");
             try{
-                number = input.nextInt( );
-            } catch(InputMismatchException e){
+                number = Integer.parseInt(input.nextLine( ));
+            } catch(NumberFormatException e){
                 System.out.println("O valor deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
             switch(number){
                 case 1:
@@ -44,7 +41,7 @@ public class Main {
         System.out.println("Encerrando o sistema...");
     }
 
-    public static void auxiliarFreight( ){
+    public static void auxiliarFreight( ){ 
         int option = 0;
         FreightDAO freightDAO = DaoFactory.createFreightDao();
         do{
@@ -60,13 +57,11 @@ public class Main {
                 "9. Retornar.");
             System.out.println("Qual opçao deseja? ");
             try{
-                option = input.nextInt( );
-            }   catch(InputMismatchException e){
+                option = Integer.parseInt(input.nextLine( ));
+            }   catch(NumberFormatException e){
                 System.out.println("O valor deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
 
             switch(option){
@@ -115,13 +110,11 @@ public class Main {
                 "6. Retornar.");
             System.out.println("Qual opçao deseja? ");
             try{
-                option = input.nextInt( );
-            } catch(InputMismatchException e){
+                option = Integer.parseInt(input.nextLine( ));
+            } catch(NumberFormatException e){
                 System.out.println("O valor deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
             switch(option){
                 case 1:
@@ -161,13 +154,11 @@ public class Main {
                 "6. Retornar.");
             System.out.println("Qual opçao deseja? ");
             try{
-                option = input.nextInt( );
-            } catch(InputMismatchException e){
+                option = Integer.parseInt(input.nextLine( ));
+            } catch(NumberFormatException e){
                 System.out.println("O valor deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
             switch(option){
                 case 1:

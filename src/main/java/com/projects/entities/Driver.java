@@ -67,7 +67,7 @@ public class Driver implements Serializable{
     }
     @Override
     public String toString() {
-        return "Motorista: id = " + id + ", cpf = " + cpf + ", nome = " + name + ", data de nascimento = " + birthDate + ", Carteira de Motorista = "
-        + licenseDriver + ", Celular = " + phone;
+        return "Motorista: \nid = " + id + "\ncpf = " + cpf + "\nnome = " + name + "\ndata de nascimento = " + birthDate + "\ncarteira de motorista = "
+        + licenseDriver + "\ncelular = " + phone + "\n";
     }
 }

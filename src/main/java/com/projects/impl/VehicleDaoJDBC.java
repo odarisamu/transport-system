@@ -24,7 +24,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
             statement.executeUpdate( );
             ResultSet result = statement.getGeneratedKeys();
             if(result.next( ))
-                vehicle.setId(result.getInt("id"));
+                vehicle.setId(result.getInt(1));
             result.close( );
             System.out.println("Veiculo adicionado!!!");
         } catch(SQLException e){

@@ -17,8 +17,8 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public void changePayment(Integer id) {
         try(Connection connection = Conection.getConnection();
-                PreparedStatement statement = connection.prepareStatement("UPDATE Freight SET payment = ? WHERE = ?")){
-            statement.setBoolean(1, true);
+                PreparedStatement statement = connection.prepareStatement("UPDATE freight SET payment = ? WHERE id = ?")){
+            statement.setInt(1, 1);
             statement.setInt(2, id);
             int rowsAffected = statement.executeUpdate();
             if(rowsAffected > 0)
@@ -31,9 +31,9 @@ public class FreightDaoJDBC implements FreightDAO{
 
     @Override
     public List<Freight> findNotPaid() {
-        try (Connection connection = Conection.getConnection();
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle WHERE payment = ?")){
-            statement.setBoolean(1, false);
+        try (Connection connection = Conection.getConnection( );
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM freight WHERE payment = ?")){
+            statement.setInt(1, 0);
             ResultSet result = statement.executeQuery( );
             List<Freight> notPaids = new ArrayList<>();
             while(result.next( )){
@@ -52,8 +52,8 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public List<Freight> findPaid() {
         try (Connection connection = Conection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle WHERE payment = ?")){
-            statement.setBoolean(1, true);
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM freight WHERE payment = ?")){
+            statement.setInt(1, 1);
             ResultSet result = statement.executeQuery( );
             List<Freight> paids = new ArrayList<>();
             while(result.next( )){
@@ -72,7 +72,7 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public List<Freight> listAll() {
         try (Connection connection = Conection.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle")){
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM freight")){
             ResultSet result = statement.executeQuery( );
             List<Freight> vehicles = new ArrayList<>();
             while(result.next( )){
@@ -104,7 +104,7 @@ public class FreightDaoJDBC implements FreightDAO{
             statement.executeUpdate();
             ResultSet result = statement.getGeneratedKeys();
             if(result.next()){
-                freight.setId(result.getInt("id"));
+                freight.setId(result.getInt(1));
             }
             System.out.println("Frete adicionado!!!");
         } catch(SQLException e){
@@ -139,7 +139,7 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public void deleteById(Integer id) {
         try(Connection connection = Conection.getConnection();
-               PreparedStatement statement = connection.prepareStatement("DELETE FROM Freight WHERE id = ?")){
+               PreparedStatement statement = connection.prepareStatement("DELETE FROM freight WHERE id = ?")){
             statement.setInt(1, id);
             int rowsAffected = statement.executeUpdate();
             if(rowsAffected > 0)
@@ -153,7 +153,7 @@ public class FreightDaoJDBC implements FreightDAO{
     @Override
     public Freight findById(Integer id) {
         try(Connection connection = Conection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Freight WHERE id = ?")){
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM freight WHERE id = ?")){
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             if(result.next()){
