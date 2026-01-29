@@ -23,26 +23,24 @@ public class AuxiliarDriver {
     public static void findById(DriverDAO driverDAO){
         System.out.println("Insira o ID do motorista procurado: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             Driver driver = driverDAO.findById(id);
             if(driver != null){
                 System.out.println(driver);
             } else{
                 System.out.println("Nao há motoristas com o ID informado.");
             }
-            } catch(InputMismatchException e){
+            } catch(NumberFormatException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
     }
 
     public static Driver findByIdAux(DriverDAO driverDAO){
         System.out.println("Insira o ID do motorista: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             Driver driver = driverDAO.findById(id);
             if(driver != null){
                 return driver;
@@ -50,7 +48,7 @@ public class AuxiliarDriver {
                 System.out.println("Nao há motoristas com o ID informado.");
                 return null;
             }
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
                 return null;
         } catch(Exception e){
@@ -70,7 +68,7 @@ public class AuxiliarDriver {
             "5. Telefone\n");
 
             try{
-                Integer option = input.nextInt( );
+                Integer option = Integer.parseInt(input.nextLine( ));
                 switch(option){
                     case 1:
                         System.out.println("Digite o CPF do motorista (12345678901): ");
@@ -86,11 +84,11 @@ public class AuxiliarDriver {
                         break;
                     case 3:
                         System.out.println("Dia de nascimento (DD): ");
-                        String day = input.next( );
+                        String day = input.nextLine( );
                         System.out.println("Mes de nascimento (MM): ");
-                        String month = input.next( );
+                        String month = input.nextLine( );
                         System.out.println("Ano de nascimento(AAAA): ");
-                        String year = input.next( );
+                        String year = input.nextLine( );
                         String birth = year + "-" + month + "-" + day;
                         Date birthDate = Date.valueOf(birth);
                         driver.setBirthDate(birthDate); 
@@ -111,12 +109,10 @@ public class AuxiliarDriver {
                     default:
                         System.out.println("Opcao inválida, retornando...");
                 }
-            } catch(InputMismatchException e){
+            } catch(NumberFormatException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
         }
     }
@@ -128,15 +124,14 @@ public class AuxiliarDriver {
             System.out.println("Nome: ");
             String name = input.nextLine( );
             System.out.println("Dia de nascimento (DD): ");
-            String day = input.next( );
+            String day = input.nextLine( );
             System.out.println("Mes de nascimento (MM): ");
-            String month = input.next( );
+            String month = input.nextLine( );
             System.out.println("Ano de nascimento(AAAA): ");
-            String year = input.next( );
+            String year = input.nextLine( );
             String birth = year + "-" + month + "-" + day;
             Date birthDate = Date.valueOf(birth);
             System.out.println("Carteira de Motorista: ");
-            input.nextLine( );
             String licenseDriver = input.nextLine( );
             System.out.println("Telefone (DD9NNNNNNNN): ");
             String phone = input.nextLine( );
@@ -144,24 +139,20 @@ public class AuxiliarDriver {
             driverDAO.insert(driver);
         } catch(InputMismatchException e){
             System.out.println("O valor digitado nao e do tipo especificado!");
-            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
-            input.nextLine( );
         }
     }
 
     public static void deleteById(DriverDAO driverDAO){
         System.out.println("Digite o ID do motorista a excluir: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             driverDAO.deleteById(id);
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
-            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
-            input.nextLine( );
         }
     }
 }

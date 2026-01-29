@@ -16,7 +16,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
     @Override
     public void insert(Vehicle vehicle) {
         try(Connection connection = Conection.getConnection( );
-              PreparedStatement statement = connection.prepareStatement("INSERT INTO Vehicle(truckSign, maxWeight, numberAxles) " + 
+              PreparedStatement statement = connection.prepareStatement("INSERT INTO vehicle(truckSign, maxWeight, numberAxles) " + 
               " VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS)){
             statement.setString(1, vehicle.getTruckSign());
             statement.setDouble(2, vehicle.getMaxWeight());
@@ -36,7 +36,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
     @Override
     public Vehicle findById(Integer id) {
         try(Connection connection = Conection.getConnection( );
-               PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicle WHERE id = ?")){
+               PreparedStatement statement = connection.prepareStatement("SELECT * FROM vehicle WHERE id = ?")){
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery( );
             if(result.next( )){
@@ -54,7 +54,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
     @Override
     public void update(Vehicle vehicle) {
         try(Connection connection = Conection.getConnection();
-               PreparedStatement statement = connection.prepareStatement("UPDATE Vehicle SET truckSign = ?, maxWeight = ?, numberAxles = ? " + 
+               PreparedStatement statement = connection.prepareStatement("UPDATE vehicle SET truckSign = ?, maxWeight = ?, numberAxles = ? " + 
                "WHERE id = ?")){
             statement.setString(1, vehicle.getTruckSign());
             statement.setDouble(2, vehicle.getMaxWeight());
@@ -72,7 +72,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
     @Override
     public void deleteById(Integer id) {
         try(Connection connection = Conection.getConnection();
-              PreparedStatement statement = connection.prepareStatement("DELETE FROM Vehicle WHERE id = ?")){
+              PreparedStatement statement = connection.prepareStatement("DELETE FROM vehicle WHERE id = ?")){
             statement.setInt(1, id);
             int rowsAffected = statement.executeUpdate();
             if(rowsAffected > 0)
@@ -86,7 +86,7 @@ public class VehicleDaoJDBC implements VehicleDAO{
     @Override
     public List<Vehicle> listAll() {
         try(Connection connection = Conection.getConnection( );
-               PreparedStatement statement = connection.prepareStatement("SELECT * FROM Vehicles")){
+               PreparedStatement statement = connection.prepareStatement("SELECT * FROM vehicle")){
             ResultSet result = statement.executeQuery();
             List<Vehicle> vehicles = new ArrayList<>();
             while(result.next( )){

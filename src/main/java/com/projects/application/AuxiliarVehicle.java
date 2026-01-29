@@ -1,6 +1,5 @@
 package com.projects.application;
 
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,44 +15,40 @@ public class AuxiliarVehicle {
             System.out.println("Placa (AAA1234): ");
             String truckSign = input.nextLine( );
             System.out.println("Peso máximo: ");
-            Double maxWeight = input.nextDouble( );
+            Double maxWeight = Double.parseDouble(input.nextLine( ));
             System.out.println("Número de eixos: ");
-            Integer numberAxles = input.nextInt( );
+            Integer numberAxles = Integer.parseInt(input.nextLine( ));
             
             Vehicle vehicle = new Vehicle(truckSign, maxWeight, numberAxles);
             vehicleDAO.insert(vehicle);
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado nao corresponde ao requerido!");
-            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
-            input.nextLine( );
         }
     }
     
     public static void findById(VehicleDAO vehicleDAO){
         System.out.println("Insira o ID do veículo procurado: ");
         try{
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             Vehicle vehicle = vehicleDAO.findById(id);
             if(vehicle != null){
                 System.out.println(vehicle);
             } else{
                 System.out.println("Nao há veículos com o ID informado.");
             }
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
-            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
-            input.nextLine( );
         }
     }
 
     public static Vehicle findByIdAux(VehicleDAO vehicleDAO){
         try{
             System.out.println("Insira o ID do veículo: ");
-            Integer id = input.nextInt( );
+            Integer id = Integer.parseInt(input.nextLine( ));
             Vehicle vehicle = vehicleDAO.findById(id);
             if(vehicle != null){
                 return vehicle;
@@ -61,7 +56,7 @@ public class AuxiliarVehicle {
                 System.out.println("Nao há veículos com o ID informado.");
                 return null;
             }
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
             return null;
         } catch(Exception e){
@@ -79,7 +74,7 @@ public class AuxiliarVehicle {
             "3. Número de eixos \n");
         }
             try{
-                Integer option = input.nextInt( );
+                Integer option = Integer.parseInt(input.nextLine( ));
                 switch(option){
                     case 1:
                         System.out.println("Digite a Placa do Veículo: ");
@@ -89,42 +84,37 @@ public class AuxiliarVehicle {
                         break;
                     case 2:
                         System.out.println("Digite o Peso máximo: ");
-                        Double maxWeight = input.nextDouble( );
+                        Double maxWeight = Double.parseDouble(input.nextLine( ));
                         vehicle.setMaxWeight(maxWeight);
                         vehicleDAO.update(vehicle);
                         break;
                     case 3:
                         System.out.println("Digite o número de eixos: ");
-                        Integer numberAxles = input.nextInt();
+                        Integer numberAxles = Integer.parseInt(input.nextLine( ));
                         vehicle.setNumberAxles(numberAxles);
                         vehicleDAO.update(vehicle);
                         break;
                     default:
                         System.out.println("Opcao invalida, retornando...");
                 }
-            } catch(InputMismatchException e){
+            } catch(NumberFormatException e){
                 System.out.println("O valor digitado deve ser um inteiro!");
-                input.nextLine( );
             } catch(Exception e){
                 System.out.println("Erro desconhecido!");
-                input.nextLine( );
             }
     }
 
     public static void deleteById(VehicleDAO vehicleDAO){
         System.out.println("Digite o ID do veículo a excluir: ");
         try{
-            Integer id = Integer.parseInt(input.next( ));
+            Integer id = Integer.parseInt(input.nextLine( ));
             vehicleDAO.deleteById(id);
-        } catch(InputMismatchException e){
+        } catch(NumberFormatException e){
             System.out.println("O valor digitado deve ser um inteiro!");
-            input.nextLine( );
         } catch(Exception e){
             System.out.println("Erro desconhecido!");
-            input.nextLine( );
         }
     }
-
 
     public static void listAll(VehicleDAO vehicleDAO){
         List<Vehicle> vehicles = vehicleDAO.listAll();

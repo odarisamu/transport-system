@@ -17,7 +17,7 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public List<Driver> listAll() {
         try(Connection connection = Conection.getConnection( );
-               PreparedStatement statement = connection.prepareStatement("SELECT * FROM Driver")){
+               PreparedStatement statement = connection.prepareStatement("SELECT * FROM driver")){
             ResultSet result = statement.executeQuery( );
             List<Driver> drivers = new ArrayList<>( );
             while(result.next( )){
@@ -36,7 +36,7 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public Driver findById(Integer id) {
         try(Connection connection = Conection.getConnection( );
-              PreparedStatement statement = connection.prepareStatement("SELECT * FROM Driver WHERE id = ?")){
+              PreparedStatement statement = connection.prepareStatement("SELECT * FROM driver WHERE id = ?")){
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery( );
             if(result.next( )){
@@ -54,7 +54,7 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public void update(Driver driver) {
         try(Connection connection = Conection.getConnection();
-               PreparedStatement statement = connection.prepareStatement("UPDATE Driver SET cpf = ?, name = ?, birthDate = ?, licenseDriver = ?, " +
+               PreparedStatement statement = connection.prepareStatement("UPDATE driver SET cpf = ?, name = ?, birthDate = ?, licenseDriver = ?, " +
                "phone = ? WHERE id = ?")){
             statement.setString(1, driver.getCpf());
             statement.setString(2, driver.getName());
@@ -73,7 +73,7 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public void insert(Driver driver) {
         try(Connection connection = Conection.getConnection( );
-                PreparedStatement statement = connection.prepareStatement("INSERT INTO Driver(cpf, name, birthDate, licenseDriver, phone) VALUES " +
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO driver(cpf, name, birthDate, licenseDriver, phone) VALUES " +
                     "(?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)){
             statement.setString(1, driver.getCpf());
             statement.setString(2, driver.getName());
@@ -95,7 +95,7 @@ public class DriverDaoJDBC implements DriverDAO{
     @Override
     public void deleteById(Integer id) {
         try(Connection connection = Conection.getConnection();
-              PreparedStatement statement = connection.prepareStatement("DELETE FROM Driver WHERE id = ?")){
+              PreparedStatement statement = connection.prepareStatement("DELETE FROM driver WHERE id = ?")){
             statement.setInt(1, id);
             int rowsAffected = statement.executeUpdate( );
             if(rowsAffected == 1){
