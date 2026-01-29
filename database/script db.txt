@@ -8,13 +8,15 @@ CREATE TABLE Driver(
     birthDate DATE NOT NULL,
     licenseDriver VARCHAR(20) NOT NULL,
     phone  CHAR(11),
-    PRIMARY KEY(id));
+    PRIMARY KEY(id),
+    UNIQUE(cpf);
 CREATE TABLE Vehicle(
     id INTEGER NOT NULL AUTO_INCREMENT,
     truckSign CHAR(7) NOT NULL,
     maxWeight DOUBLE(10,2) NOT NULL,
     numberAxles INTEGER NOT NULL,
-    PRIMARY KEY (id));
+    PRIMARY KEY (id),
+    UNIQUE(truckSign);
 CREATE TABLE Freight(
     id INTEGER NOT NULL AUTO_INCREMENT,
     idDriver INTEGER NOT NULL,
