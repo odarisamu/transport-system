@@ -1,6 +1,6 @@
-## **Requeriments Engeneering 📝**
+**Requeriments Engeneering**
 
-• ***Non-Functional Requeriments***:
+• Non-Functional Requeriments:
 
 → Text-based Java system;
 
@@ -10,16 +10,13 @@
 
 → Factory and DAO design patterns;
 
-• ***Functional Requeriments***: 
+• Functional Requeriments: 
 
 1) Freight:
-
-Operacoes: mudar o status de pagamento da carga, acessar as cargas pendentes (ordem temporal), acessar as cargas pagas (ordem temporal), adicionar uma nova carga, excluir uma carga existente, alterar algum atributo de uma carga, listar todas as cargas.
+• Operations: change payment status, find freights not paid, find freights paid, list all freights, add new freight, update a freight, delete a freight.
 
 2) Driver:
-
-Operacoes: listar todos os funcionarios, alterar o atributo de um funcionario, adicionar um funcionario e excluir um funcionario.
+• Operations: list all Drivers, find an Driver, update a Driver, add new Driver and delete a Driver.
 
 3) Vehicle
-
-Operacoes: adicionar um veiculo, alterar um veiculo, excluir um veiculo, listar todos os veiculos.
+• Operations: add new Vehicle, find a Vehicle, update a Vehicle, delete a Vehicle, list all Vehicles.
