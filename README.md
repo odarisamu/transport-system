@@ -1,29 +1,31 @@
 ## Motivation 💭
-The economy of my city is based on transportation companies, many of which are small. I have experience working in one of them, where freight, driver, and vehicle documents were organized on paper. This system proposes an easy-to-use, extensible and low-cost solution to help these companies.
+The economy of my city is based on transportation companies, many of which are small. I have experience working in one of them, where freight, driver, and vehicle records were managed on paper. This system proposes an easy-to-use, extensible, and low-cost solution to help these companies.
 
 ## Transport System 🚛
-O sistema possibilita administrar os motoristas, fretes e veiculos da empresa de uma maneira reunida e modificavel. A base do programa consiste em um terminal que interage com o usuario conforme as demandas da empresa. As informacoes fornecidas e alteradas possuem carater persistente oferecido pelo banco de dados que roda localmente na maquina.
+The system allows the management of drivers, freights, and vehicles in a unified and flexible way. The core of the program is a CLI that interacts with the user according to the company’s needs. The provided and modified information is persistent through a database that runs locally on the machine.
 
-A estrutura principal está representada no diagrama de classes abaixo:
+The main structure is represented in the class diagram below:
+![alt text](classDiagram.png)
 
-![alt text](image-2.png)
+* The main class models the user access menu and, according to the selected option, redirects to auxiliary classes (FreightAux, DriverAux, VehicleAux). These auxiliary classes contain the operations of each entity in the system and interact with DAO classes, which ultimately communicate with the database.
 
--> A classe principal modela o menu de acesso com o usuario que, conforme a opcao selecionada, é direcionada para cada classe de funcoes auxiliares (FreightAux, DriverAux, VehicleAux). As classes auxiliares, por sua vez, contém as operacoes de cada entidade do programa; ao selecionar uma operacao, a classe auxiliar interage com as classes DAO que definitivamente interagem com o banco de dados.
--> Esse esquema de organizacao colabora para a concisao do projeto de forma que seja modular e extensível conforme caracteristicas mutáveis de empresa para empresa.
+* This organization improves project cohesion and makes the system modular and extensible according to the specific characteristics of each company.
 
-NOS TEMOS NESSE PROJETO TRATAMENTO DE EXCECAO, DE MODO QUE O PROGRAMA POSSA CONTINUAR OPERANDO 
-MESMO FRENTE A ADVERSIDADES.
-PARA USUARIOS INEXPERIENTES, OS VEICULOS E MOTORISTAS DEVEM SEMPRE SER ADICIONADOS ANTES DAS CARGAS.
+* The project includes exception handling so that the system continues running even when errors occur during data insertion.
 
+* Tip for use (💡): New users are recommended to first add drivers and vehicles (which change less frequently) and then add freights.
 
-Presente nesse projeto, temos as tecnologias: Maven, JDBC e os padroes DAO e Factory.
+## Technologies 🔍
+This project uses Maven, JDBC, and the DAO/Factory design patterns.
+
 ## What you need to run 🪛
-The system need the tools below:
-1. A computer with operational system (Windows, Linux or Mac OS);
-2. Java instaled, more information in [https://www.oracle.com/bz/java/technologies/downloads/];
-3. MySQL instaled in your machine, more information in [https://www.mysql.com/downloads/].
+The system requires the following tools:
+1. A computer with an operating system (Windows, Linux, or macOS);
+2. Java installed — more information at https://www.oracle.com/br/java/technologies/downloads/;
+3. MySQL installed on your machine — more information at https://www.mysql.com/downloads/.
 
 ## License 📖
-Feel free to use or modify the system as you wish!!!
+Feel free to use or modify this system as you wish!
+
 
 
